@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portofolio Digital Ridho</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Poppins', sans-serif;
+    background:#0f172a;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* BACKGROUND BINTANG */
+.stars{
+    position:fixed;
+    inset:0;
+    z-index:-2;
+}
+
+.star{
+    position:absolute;
+    width:2px;
+    height:2px;
+    background:white;
+    border-radius:50%;
+    animation:fall linear infinite;
+}
+
+@keyframes fall{
+    from{ transform:translateY(-100px); opacity:0; }
+    10%{ opacity:1; }
+    to{ transform:translateY(100vh); opacity:0; }
+}
+
+/* GRADIENT BLOBS */
+.blob{
+    position:fixed;
+    border-radius:50%;
+    filter:blur(80px);
+    opacity:.25;
+    z-index:-1;
+}
+
+.blob1{
+    width:300px;
+    height:300px;
+    background:#38bdf8;
+    top:0;
+    left:0;
+}
+
+.blob2{
+    width:350px;
+    height:350px;
+    background:#a855f7;
+    bottom:0;
+    right:0;
+}
+
+.blob3{
+    width:250px;
+    height:250px;
+    background:#22c55e;
+    top:40%;
+    left:60%;
+}
+
+/* NAVBAR */
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    flex-wrap:wrap;
+    padding:12px;
+    background:rgba(15,23,42,.75);
+    backdrop-filter:blur(12px);
+    z-index:1000;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    font-size:14px;
+    padding:8px 14px;
+    border-radius:999px;
+    transition:.3s;
+}
+
+nav a:hover{
+    background:#38bdf8;
+}
+
+.container{
+    width:min(92%, 1000px);
+    margin:auto;
+    padding:90px 0 40px;
+}
+
+.card{
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.12);
+    backdrop-filter:blur(12px);
+    border-radius:24px;
+    padding:30px;
+    margin-top:28px;
+    box-shadow:0 20px 40px rgba(0,0,0,.25);
+}
+
+/* HERO */
+.hero{
+    position:relative;
+    overflow:hidden;
+    text-align:center;
+    padding:50px 30px;
+    background:
+      radial-gradient(circle at top right, rgba(56,189,248,.25), transparent 40%),
+      radial-gradient(circle at bottom left, rgba(168,85,247,.20), transparent 40%),
+      rgba(255,255,255,.08);
+}
+
+.hero::before,
+.hero::after{
+    content:"";
+    position:absolute;
+    border-radius:50%;
+    opacity:.15;
+}
+
+.hero::before{
+    width:220px;
+    height:220px;
+    background:#38bdf8;
+    top:-80px;
+    right:-60px;
+}
+
+.hero::after{
+    width:180px;
+    height:180px;
+    background:#a855f7;
+    bottom:-70px;
+    left:-50px;
+}
+
+.hero-icons{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-bottom:20px;
+    font-size:28px;
+}
+
+.icon-badge{
+    width:54px;
+    height:54px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:16px;
+    background:rgba(255,255,255,.12);
+    box-shadow:0 8px 20px rgba(0,0,0,.2);
+    animation:float 4s ease-in-out infinite;
+}
+
+.icon-badge:nth-child(2){ animation-delay:.5s; }
+.icon-badge:nth-child(3){ animation-delay:1s; }
+.icon-badge:nth-child(4){ animation-delay:1.5s; }
+
+@keyframes float{
+    0%,100%{ transform:translateY(0); }
+    50%{ transform:translateY(-8px); }
+}
+
+.profile img{
+    width:170px;
+    height:170px;
+    border-radius:50%;
+    object-fit:cover;
+    border:5px solid white;
+    box-shadow:0 0 30px rgba(56,189,248,.6);
+    margin:15px 0;
+}
+
+.hero h1{
+    font-size:clamp(28px, 6vw, 48px);
+    font-weight:800;
+    color:#38bdf8;
+    min-height:60px;
+}
+
+.subtitle{
+    font-size:18px;
+    color:#e2e8f0;
+    margin-top:8px;
+}
+
+.hero p.description{
+    max-width:700px;
+    margin:20px auto 0;
+    color:#cbd5e1;
+    line-height:1.8;
+}
+
+/* BUTTONS */
+.buttons{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:10px;
+    margin-top:25px;
+}
+
+.buttons button{
+    border:none;
+    padding:12px 18px;
+    border-radius:12px;
+    background:linear-gradient(45deg,#38bdf8,#0ea5e9);
+    color:white;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.buttons button:hover{
+    transform:translateY(-3px) scale(1.03);
+    box-shadow:0 10px 20px rgba(56,189,248,.3);
+}
+
+h2{
+    color:#38bdf8;
+    margin-bottom:14px;
+}
+
+p{
+    line-height:1.8;
+    color:#e2e8f0;
+}
+
+.info p{
+    margin-bottom:8px;
+}
+
+.karya-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.karya-item{
+    background:rgba(255,255,255,.05);
+    padding:20px;
+    border-radius:18px;
+    text-align:center;
+}
+
+.karya-item img{
+    width:80px;
+    margin:10px 0;
+}
+
+.footer{
+    text-align:center;
+    color:#94a3b8;
+    margin-top:30px;
+    font-size:14px;
+}
+
+@media (max-width:600px){
+    nav{
+        gap:6px;
+        padding:10px;
+    }
+
+    nav a{
+        font-size:12px;
+        padding:6px 10px;
+    }
+
+    .card{
+        padding:22px;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="stars" id="stars"></div>
+<div class="blob blob1"></div>
+<div class="blob blob2"></div>
+<div class="blob blob3"></div>
+
+<nav>
+    <a href="#home">Home</a>
+    <a href="#biodata">Biodata</a>
+    <a href="#tentang">Tentang</a>
+    <a href="#prinsip">Prinsip</a>
+    <a href="#karya">Karya</a>
+    <a href="#motivasi">Motivasi</a>
+</nav>
+
+<div class="container">
+
+    <!-- HERO / SAMPUL -->
+    <section class="card hero profile" id="home">
+
+        <div class="hero-icons">
+            <div class="icon-badge">💻</div>
+            <div class="icon-badge">🌐</div>
+            <div class="icon-badge">⚙️</div>
+            <div class="icon-badge">🚀</div>
+        </div>
+
+        <img src="ridho.jpg" alt="Foto Profil">
+
+        <h1 id="nama"></h1>
+
+        <p class="subtitle">Siswa Teknik Komputer dan Jaringan</p>
+
+        <p class="description">
+            Selamat datang di portofolio digital saya. Saya adalah siswa yang antusias
+            mempelajari teknologi, jaringan komputer, dan pengembangan website modern.
+        </p>
+
+        <div class="buttons">
+            <button onclick="goTo('biodata')">📌 Biodata</button>
+            <button onclick="goTo('tentang')">👨‍💻 Tentang</button>
+            <button onclick="goTo('karya')">🏆 Karya</button>
+            <button onclick="goTo('motivasi')">🔥 Motivasi</button>
+        </div>
+    </section>
+
+    <!-- BIODATA -->
+    <section class="card info" id="biodata">
+        <h2>📌 Biodata</h2>
+        <p><b>Nama:</b> ANDI MUH. RIDHO SYAMSUDDIN</p>
+        <p><b>Umur:</b> 16 Tahun</p>
+        <p><b>Tempat, Tanggal Lahir:</b> Makassar, 24 Agustus 2009</p>
+        <p><b>Kelas:</b> X TKJ 2</p>
+        <p><b>Asal Sekolah:</b> SMKN 10 MAKASSAR</p>
+        <p><b>Alamat Rumah:</b> Jl. Pelita Raya 4</p>
+    </section>
+
+    <!-- TENTANG -->
+    <section class="card" id="tentang">
+        <h2>👨‍💻 Tentang Saya</h2>
+        <p>
+            Halo! Saya ANDI MUH. RIDHO SYAMSUDDIN, seorang siswa dari jurusan
+            Teknik Komputer dan Jaringan di SMKN 10 Makassar. Saya memiliki minat
+            di bidang teknologi, komputer, jaringan, dan desain web. Saya senang
+            belajar hal baru dan terus mengembangkan kemampuan saya di dunia IT.
+        </p>
+    </section>
+
+    <!-- PRINSIP -->
+    <section class="card" id="prinsip">
+        <h2>💡 Prinsip Hidup</h2>
+        <p>
+            “Saya percaya bahwa kesuksesan datang dari usaha, disiplin, dan doa.
+            Tidak ada hasil yang mengkhianati proses.”
+        </p>
+    </section>
+
+    <!-- KARYA -->
+    <section class="card" id="karya">
+        <h2>🏆 Hasil Karya</h2>
+
+        <div class="karya-grid">
+            <div class="karya-item">
+                <h3>🧮 Membuat Kalkulator</h3>
+                <img src="https://cdn-icons-png.flaticon.com/512/2099/2099058.png" alt="Kalkulator">
+                <p>Membuat kalkulator sederhana menggunakan HTML, CSS, dan JavaScript.</p>
+            </div>
+
+            <div class="karya-item">
+                <h3>🤖 Gambar dari AI</h3>
+                <img src="https://cdn-icons-png.flaticon.com/512/4712/4712109.png" alt="AI">
+                <p>Menghasilkan gambar kreatif menggunakan teknologi Artificial Intelligence.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- MOTIVASI -->
+    <section class="card" id="motivasi">
+        <h2>🔥 Motivasi Hidup</h2>
+        <p>
+            “Kesuksesan tidak datang dari zona nyaman. Terus belajar, berusaha,
+            dan jangan pernah menyerah untuk meraih masa depan yang lebih baik.”
+        </p>
+    </section>
+
+    <div class="footer">
+        © 2026 Portofolio Digital ANDI MUH. RIDHO SYAMSUDDIN
+    </div>
+</div>
+
+<script>
+// Typing effect
+const text = "ANDI MUH. RIDHO SYAMSUDDIN";
+let i = 0;
+function typing(){
+    if(i < text.length){
+        document.getElementById('nama').textContent += text.charAt(i);
+        i++;
+        setTimeout(typing, 100);
+    }
+}
+typing();
+
+// Smooth scroll
+function goTo(id){
+    document.getElementById(id).scrollIntoView({behavior:'smooth'});
+}
+
+// Stars
+for(let i=0;i<100;i++){
+    const star = document.createElement('div');
+    star.className = 'star';
+    star.style.left = Math.random() * 100 + '%';
+    star.style.top = Math.random() * 100 + '%';
+    star.style.animationDuration = (Math.random() * 6 + 4) + 's';
+    star.style.animationDelay = Math.random() * 5 + 's';
+    document.getElementById('stars').appendChild(star);
+}
+</script>
+
+</body>
+</html>
